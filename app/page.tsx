@@ -1,19 +1,78 @@
-import { Button } from "@/components/ui/button"
+import { Education } from "@/components/education"
+import { Experience } from "@/components/experience"
+import { Hero } from "@/components/hero"
+import { Highlights } from "@/components/highlights"
+import { Projects } from "@/components/projects"
+import { SiteFooter } from "@/components/site-footer"
+import { TechStack } from "@/components/tech-stack"
+import { Reveal } from "@/components/ui/reveal"
+import { siteDescription, siteName, siteUrl, socials } from "@/lib/site"
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteName,
+  url: siteUrl,
+  image: `${siteUrl}/image/gibli.png`,
+  jobTitle: "Full Stack Software Engineer",
+  description: siteDescription,
+  email: `mailto:${socials.email}`,
+  worksFor: {
+    "@type": "Organization",
+    name: "Linkrunner",
+    url: "https://www.linkrunner.io",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "St. Xavier's College, Ahmedabad",
+  },
+  sameAs: [socials.github, socials.linkedin, socials.x],
+  knowsAbout: [
+    "TypeScript",
+    "Go",
+    "React",
+    "React Native",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "ClickHouse",
+    "Kafka",
+    "Kubernetes",
+    "AWS",
+    "GCP",
+    "AI systems",
+    "LLMs",
+  ],
+}
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <main className="mx-auto w-full max-w-3xl px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      <Reveal>
+        <Hero />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <Highlights />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <Experience />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <Projects />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <Education />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <TechStack />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <SiteFooter />
+      </Reveal>
+    </main>
   )
 }
