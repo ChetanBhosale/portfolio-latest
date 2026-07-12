@@ -29,7 +29,11 @@ export function Hero() {
             </p>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              These days I&apos;m a founding engineer at{" "}
+              These days I&apos;m a{" "}
+              <strong className="font-semibold text-foreground">
+                founding engineer
+              </strong>{" "}
+              at{" "}
               <LinkPreview
                 url="https://www.linkrunner.io"
                 className="inline-flex items-center gap-2 align-baseline font-semibold text-foreground underline decoration-ember/60 underline-offset-4 transition-colors hover:decoration-ember"
@@ -105,9 +109,14 @@ export function Hero() {
               </LinkPreview>
 
 
-              , where I rebuilt the dashboard from 0 to 1 in 20 days, ship
-              SDKs across 5 platforms, and move data and infra around
-              (Postgres to ClickHouse, AWS to GCP) so the bills go down.
+              , where we&apos;re solving the{" "}
+              <strong className="font-semibold text-foreground">
+                attribution problem
+              </strong>{" "}
+              and turning marketers into 100x marketers. I rebuilt the
+              dashboard from 0 to 1 in 20 days, ship SDKs across 5 platforms,
+              and move data and infra around (Postgres to ClickHouse, AWS to
+              GCP) so the bills go down.
             </p>
           </div>
 
