@@ -113,10 +113,7 @@ export function Hero() {
               <strong className="font-semibold text-foreground">
                 attribution problem
               </strong>{" "}
-              and turning marketers into 100x marketers. I rebuilt the
-              dashboard from 0 to 1 in 20 days, ship SDKs across 5 platforms,
-              and move data and infra around (Postgres to ClickHouse, AWS to
-              GCP) so the bills go down.
+              and turning marketers into 100x marketers.
             </p>
           </div>
 
