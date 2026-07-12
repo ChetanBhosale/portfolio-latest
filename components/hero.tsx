@@ -9,7 +9,7 @@ export function Hero() {
     <>
       <SiteHeader />
 
-      <section className="pb-8">
+      <section className="pb-4">
         <div className="rounded-lg border border-ember/60 bg-ember/10 px-5 py-4 font-mono font-semibold">
           <span className="animate-wave">👋</span> Hi, I am Chetan Bhosale
         </div>

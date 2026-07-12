@@ -75,12 +75,16 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section className="border-t border-dashed py-8">
+    <section className="py-6">
       <h2 className="font-mono text-lg font-bold tracking-tight">
         <span className="text-ember">#</span> side projects
       </h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        From the product experience to the API behind it to the infrastructure
+        underneath, I ship the whole thing end to end.
+      </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
           <div
             key={project.name}

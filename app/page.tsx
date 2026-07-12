@@ -1,7 +1,6 @@
 import { Education } from "@/components/education"
 import { Experience } from "@/components/experience"
 import { Hero } from "@/components/hero"
-import { Highlights } from "@/components/highlights"
 import { Projects } from "@/components/projects"
 import { SiteFooter } from "@/components/site-footer"
 import { TechStack } from "@/components/tech-stack"
@@ -54,9 +53,6 @@ export default function Page() {
       />
       <Reveal>
         <Hero />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <Highlights />
       </Reveal>
       <Reveal delay={0.05}>
         <Experience />

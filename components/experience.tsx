@@ -167,7 +167,7 @@ export function Experience() {
   const [open, setOpen] = React.useState<number | null>(0)
 
   return (
-    <section className="border-t border-dashed py-8">
+    <section className="py-6">
       <div className="rounded-lg border border-ember/60 bg-ember/10 px-5 py-4 font-mono font-semibold">
         💼 What I&apos;ve been up to
       </div>

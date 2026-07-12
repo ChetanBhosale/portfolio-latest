@@ -36,7 +36,7 @@ const groups = [
 
 export function TechStack() {
   return (
-    <section className="border-t border-dashed py-8">
+    <section className="py-6">
       <h2 className="font-mono text-lg font-bold tracking-tight">
         <span className="text-ember">#</span> stack
       </h2>
