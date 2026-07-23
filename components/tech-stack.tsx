@@ -1,4 +1,5 @@
 import { TechBadge } from "@/components/tech-badge"
+import { SectionHeading } from "@/components/ui/section-heading"
 
 const groups = [
   {
@@ -36,16 +37,16 @@ const groups = [
 
 export function TechStack() {
   return (
-    <section className="py-6">
-      <h2 className="font-mono text-lg font-bold tracking-tight">
-        <span className="text-ember">#</span> stack
-      </h2>
+    <section className="py-2">
+      <SectionHeading number="03" id="stack">
+        stack
+      </SectionHeading>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         {groups.map((group) => (
           <div
             key={group.label}
-            className="group rounded-xl border bg-card p-4 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-md"
+            className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40"
           >
             <p className="flex items-center gap-2 font-mono text-xs font-semibold text-muted-foreground transition-colors group-hover:text-ember">
               <span className="size-1.5 rounded-full bg-ember/70" />

@@ -1,10 +1,4 @@
-import { Education } from "@/components/education"
-import { Experience } from "@/components/experience"
-import { Hero } from "@/components/hero"
-import { Projects } from "@/components/projects"
-import { SiteFooter } from "@/components/site-footer"
-import { TechStack } from "@/components/tech-stack"
-import { Reveal } from "@/components/ui/reveal"
+import { PortfolioLanding } from "@/components/portfolio-landing"
 import { siteDescription, siteName, siteUrl, socials } from "@/lib/site"
 
 const personJsonLd = {
@@ -13,7 +7,7 @@ const personJsonLd = {
   name: siteName,
   url: siteUrl,
   image: `${siteUrl}/image/gibli.png`,
-  jobTitle: "Full Stack Software Engineer",
+  jobTitle: "Product Engineer",
   description: siteDescription,
   email: `mailto:${socials.email}`,
   worksFor: {
@@ -46,29 +40,12 @@ const personJsonLd = {
 
 export default function Page() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <Reveal>
-        <Hero />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <Experience />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <Projects />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <Education />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <TechStack />
-      </Reveal>
-      <Reveal delay={0.05}>
-        <SiteFooter />
-      </Reveal>
-    </main>
+      <PortfolioLanding />
+    </>
   )
 }

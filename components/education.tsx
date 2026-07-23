@@ -1,14 +1,16 @@
 import Image from "next/image"
 
+import { SectionHeading } from "@/components/ui/section-heading"
+
 export function Education() {
   return (
-    <section className="py-6">
-      <h2 className="font-mono text-lg font-bold tracking-tight">
-        <span className="text-ember">#</span> education
-      </h2>
+    <section className="py-2">
+      <SectionHeading number="04" id="education">
+        education
+      </SectionHeading>
 
       <div className="mt-5 space-y-3">
-        <div className="flex flex-col gap-4 rounded-xl border bg-card p-4 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-md sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 sm:flex-row sm:items-center">
           <span className="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-white p-1.5">
             <Image
               src="/image/sxca-logo.svg"
@@ -39,7 +41,7 @@ export function Education() {
           href="https://100xdevs.com/"
           target="_blank"
           rel="noreferrer"
-          className="group flex items-center gap-4 rounded-xl border bg-card p-4 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-md"
+          className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40"
         >
           <span className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-white p-1.5">
             <Image

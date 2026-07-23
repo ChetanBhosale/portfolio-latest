@@ -1,7 +1,7 @@
 export function SiteFooter() {
   return (
-    <footer className="py-6">
-      <blockquote className="border-l-2 border-ember/60 pl-4 font-mono text-sm text-muted-foreground italic">
+    <footer className="py-6 pt-10">
+      <blockquote className="border-l-2 border-ember pl-4 font-mono text-sm text-muted-foreground italic">
         &ldquo;Ship the boring reliability so the magic can happen on top of
         it.&rdquo;
       </blockquote>

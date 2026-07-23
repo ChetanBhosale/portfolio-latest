@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import { SiteHeader } from "@/components/site-header"
 import { LinkPreview } from "@/components/ui/link-preview"
@@ -9,42 +10,48 @@ export function Hero() {
     <>
       <SiteHeader />
 
-      <section className="pb-4">
-        <div className="rounded-lg border border-ember/60 bg-ember/10 px-5 py-4 font-mono font-semibold">
-          <span className="animate-wave">👋</span> Hi, I am Chetan Bhosale
+      <section className="pb-4 pt-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-xs text-muted-foreground">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ember opacity-75" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-ember" />
+          </span>
+          available for product engineering work
         </div>
 
-        <div className="mt-6 flex flex-col gap-8 md:flex-row md:items-start">
+        <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-end">
           <div className="min-w-0 flex-1">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I&apos;m a{" "}
-              <strong className="font-semibold text-foreground">
-                full stack software engineer
-              </strong>{" "}
-              who builds products and understands the{" "}
-              <strong className="font-semibold text-foreground">
-                infrastructure
-              </strong>{" "}
-              they run on. Weekends are for side projects.
-            </p>
+            <h1 className="font-mono text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+              I turn fuzzy
+              <br />
+              requirements into
+              <br />
+              <span className="text-ember">shipped products.</span>
+              <span className="animate-cursor-blink text-ember">_</span>
+            </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              These days I&apos;m a{" "}
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+              I&apos;m{" "}
+              <strong className="font-semibold text-foreground">
+                Chetan Bhosale
+              </strong>
+              , a product engineer who sits between clients, design teams, and
+              the codebase. Currently a{" "}
               <strong className="font-semibold text-foreground">
                 founding engineer
               </strong>{" "}
               at{" "}
               <LinkPreview
                 url="https://www.linkrunner.io"
-                className="inline-flex items-center gap-2 align-baseline font-semibold text-foreground underline decoration-ember/60 underline-offset-4 transition-colors hover:decoration-ember"
+                className="inline-flex items-center gap-1.5 align-baseline font-semibold text-foreground underline decoration-ember/60 underline-offset-4 transition-colors hover:decoration-ember"
                 preview={
-                  <div className="w-80 overflow-hidden rounded-xl border bg-popover shadow-xl ring-1 ring-foreground/10">
+                  <div className="w-80 overflow-hidden rounded-xl border border-border bg-popover shadow-2xl">
                     <Image
                       src="/image/linkrunner-site.png"
                       alt="Linkrunner website preview"
                       width={1200}
                       height={630}
-                      className="w-full border-b"
+                      className="w-full border-b border-border"
                     />
                     <div className="p-4">
                       <div className="flex items-center gap-3">
@@ -83,7 +90,7 @@ export function Hero() {
                         <li className="flex gap-2">
                           <span className="text-ember">▸</span>
                           <span>
-                            building attribution systems trusted by{" "}
+                            attribution systems trusted by{" "}
                             <span className="font-semibold text-foreground">
                               100+ growth teams
                             </span>
@@ -107,36 +114,45 @@ export function Hero() {
                 />
                 Linkrunner
               </LinkPreview>
-
-
-              , where we&apos;re solving the{" "}
-              <strong className="font-semibold text-foreground">
-                attribution problem
-              </strong>{" "}
-              and turning marketers into 100x marketers.
+              , building attribution systems for growth teams.
             </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 font-mono text-sm font-semibold transition-all hover:border-ember/50 hover:text-ember"
+              >
+                view work
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-lg border border-ember/50 bg-ember/10 px-4 py-2 font-mono text-sm font-semibold transition-all hover:border-ember hover:bg-ember/20"
+              >
+                get in touch
+              </Link>
+            </div>
           </div>
 
-          <Tilt className="w-full shrink-0 overflow-hidden rounded-xl border shadow-xs md:w-2/5">
+          <Tilt className="w-full shrink-0 overflow-hidden rounded-xl border border-border bg-card shadow-2xl md:w-[38%]">
             <Image
               src="/image/gibli.png"
               alt="Portrait of Chetan Bhosale"
               width={1024}
               height={1536}
               priority
-              className="aspect-square w-full object-cover object-[50%_20%]"
+              className="aspect-square w-full object-cover object-[50%_20%] grayscale transition-all duration-500 hover:grayscale-0"
             />
           </Tilt>
         </div>
 
-        <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-10 max-w-xl text-base leading-relaxed text-muted-foreground">
           Plot twist: I started out in{" "}
           <strong className="font-semibold text-foreground">
             sales and marketing
           </strong>
-          , two years of pitching and negotiating for realtors back in
-          college, before anyone let me near production code. Turns out
-          knowing how to talk to users makes building for them a lot easier.
+          , two years of pitching and negotiating for realtors before anyone
+          let me near production code. Turns out knowing how to talk to clients
+          and read a design file makes building the right thing a lot easier.
         </p>
       </section>
     </>

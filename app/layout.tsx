@@ -33,7 +33,7 @@ const fontDisplay = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Chetan Bhosale — Full Stack Engineer",
+    default: "Chetan Bhosale — Product Engineer",
     template: "%s — Chetan Bhosale",
   },
   description: siteDescription,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName,
-    title: "Chetan Bhosale — Full Stack Engineer",
+    title: "Chetan Bhosale — Product Engineer",
     description: siteDescription,
     locale: "en_US",
     images: [
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@cbtweets810",
     creator: "@cbtweets810",
-    title: "Chetan Bhosale — Full Stack Engineer",
+    title: "Chetan Bhosale — Product Engineer",
     description: siteDescription,
     images: ["/image/gibli.png"],
   },
@@ -95,7 +95,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider forcedTheme="light">
+        <ThemeProvider forcedTheme="dark">
           <SmoothScroll>
             <ScrollProgress />
             {children}

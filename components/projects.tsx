@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
 
 import { TechBadge } from "@/components/tech-badge"
+import { SectionHeading } from "@/components/ui/section-heading"
 
 type Project = {
   index: string
@@ -75,20 +76,20 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section className="py-6">
-      <h2 className="font-mono text-lg font-bold tracking-tight">
-        <span className="text-ember">#</span> side projects
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        From the product experience to the API behind it to the infrastructure
-        underneath, I ship the whole thing end to end.
+    <section className="py-2">
+      <SectionHeading number="02" id="projects">
+        side projects
+      </SectionHeading>
+      <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
+        From the client requirement to the design to the product, API, and
+        infrastructure underneath — I build the whole solution on top.
       </p>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
           <div
             key={project.name}
-            className={`group rounded-xl border bg-card shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-md ${
+            className={`group rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-0.5 hover:border-ember/40 ${
               project.featured ? "sm:col-span-2" : ""
             }`}
           >
