@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chetan Bhosale — Product Engineer</title>
+    <style>
+      :root {
+        --ink: #101510;
+        --muted: #566056;
+        --line: #d9dfd8;
+        --soft: #f4f7f2;
+        --lime: #8bea20;
+        --deep-green: #183616;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        background: #fff;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        padding: 10.5mm 12mm 9mm;
+        border-top: 3mm solid var(--lime);
+        font-size: 9pt;
+        line-height: 1.36;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8mm;
+        align-items: end;
+        padding-bottom: 4mm;
+        border-bottom: 0.4mm solid var(--ink);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 26pt;
+        line-height: 0.94;
+        letter-spacing: -0.045em;
+      }
+
+      .role {
+        margin: 2mm 0 0;
+        color: var(--deep-green);
+        font-size: 11pt;
+        font-weight: 700;
+      }
+
+      .contact {
+        display: grid;
+        gap: 1.2mm;
+        text-align: right;
+        color: var(--muted);
+        font-size: 7.6pt;
+      }
+
+      .contact a {
+        border-bottom: 0.25mm solid var(--line);
+      }
+
+      .summary {
+        margin: 3.5mm 0 4mm;
+        padding: 2.7mm 3.2mm;
+        border-left: 1.1mm solid var(--lime);
+        background: var(--soft);
+        color: #303930;
+        font-size: 9.2pt;
+        line-height: 1.4;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.92fr) minmax(0, 0.88fr);
+        gap: 6mm;
+      }
+
+      .side {
+        padding-left: 4.5mm;
+        border-left: 0.3mm solid var(--line);
+      }
+
+      .section + .section {
+        margin-top: 4mm;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 2mm;
+        margin: 0 0 2.5mm;
+        font-size: 8.3pt;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .section-title::before {
+        width: 2.1mm;
+        height: 2.1mm;
+        background: var(--lime);
+        content: "";
+      }
+
+      .job + .job {
+        margin-top: 3.5mm;
+        padding-top: 3.4mm;
+        border-top: 0.3mm solid var(--line);
+      }
+
+      .job-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 3mm;
+        align-items: start;
+      }
+
+      .job h3,
+      .project h3,
+      .education h3 {
+        margin: 0;
+        font-size: 9.7pt;
+        line-height: 1.1;
+      }
+
+      .job-role {
+        margin: 0.7mm 0 0;
+        color: var(--deep-green);
+        font-size: 8pt;
+        font-weight: 700;
+      }
+
+      .date {
+        color: var(--muted);
+        font-size: 7pt;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .company-context {
+        margin: 1.3mm 0 0;
+        color: var(--muted);
+        font-size: 7.2pt;
+      }
+
+      ul {
+        display: grid;
+        gap: 1mm;
+        margin: 1.7mm 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 3.1mm;
+      }
+
+      li::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--deep-green);
+        font-weight: 900;
+        content: "↳";
+      }
+
+      .strong {
+        font-weight: 700;
+      }
+
+      .skill-group + .skill-group {
+        margin-top: 2.5mm;
+      }
+
+      .eyebrow {
+        margin: 0 0 1mm;
+        color: var(--muted);
+        font-size: 6.7pt;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .skill-list {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .project + .project {
+        margin-top: 2.5mm;
+        padding-top: 2.5mm;
+        border-top: 0.3mm solid var(--line);
+      }
+
+      .project h3 a::after {
+        margin-left: 1mm;
+        color: var(--deep-green);
+        content: "↗";
+      }
+
+      .project p,
+      .education p,
+      .note {
+        margin: 1mm 0 0;
+        color: var(--muted);
+        font-size: 7.5pt;
+        line-height: 1.4;
+      }
+
+      .education-meta {
+        color: var(--deep-green) !important;
+        font-weight: 700;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3.5mm;
+        padding-top: 2.5mm;
+        border-top: 0.3mm solid var(--line);
+        color: var(--muted);
+        font-size: 6.5pt;
+      }
+
+      /* Plain, conventional resume treatment */
+      :root {
+        --ink: #000;
+        --muted: #333;
+        --line: #aaa;
+        --soft: #fff;
+        --lime: #000;
+        --deep-green: #000;
+      }
+
+      body {
+        padding: 11mm 14mm 9mm;
+        border-top: 0;
+        font-size: 8.4pt;
+        line-height: 1.32;
+      }
+
+      .header {
+        display: block;
+        padding-bottom: 3mm;
+        border-bottom: 0.35mm solid #000;
+      }
+
+      h1 {
+        font-size: 23pt;
+        letter-spacing: -0.025em;
+      }
+
+      .role {
+        margin-top: 1.5mm;
+        color: #000;
+        font-size: 10pt;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1mm 4mm;
+        margin-top: 2.2mm;
+        color: #222;
+        font-size: 7.2pt;
+        text-align: left;
+      }
+
+      .contact a {
+        border: 0;
+      }
+
+      .summary {
+        margin: 3mm 0 3.5mm;
+        padding: 0;
+        border: 0;
+        background: #fff;
+        color: #111;
+        font-size: 8.5pt;
+        line-height: 1.4;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .side {
+        margin-top: 3.5mm;
+        padding: 0;
+        border: 0;
+      }
+
+      .section + .section {
+        margin-top: 3.2mm;
+      }
+
+      .section-title {
+        display: block;
+        margin: 0 0 2.2mm;
+        padding-bottom: 0.9mm;
+        border-bottom: 0.25mm solid #777;
+        color: #000;
+        font-size: 8.2pt;
+        letter-spacing: 0.1em;
+      }
+
+      .section-title::before {
+        display: none;
+      }
+
+      .job + .job {
+        margin-top: 2.8mm;
+        padding-top: 2.6mm;
+        border-top: 0.2mm solid #bbb;
+      }
+
+      .job h3,
+      .project h3,
+      .education h3 {
+        font-size: 9.2pt;
+      }
+
+      .job-role {
+        color: #000;
+        font-size: 7.6pt;
+      }
+
+      .date {
+        color: #222;
+        font-size: 6.7pt;
+      }
+
+      .company-context {
+        color: #333;
+        font-size: 6.9pt;
+      }
+
+      ul {
+        display: block;
+        margin-top: 1.4mm;
+        padding-left: 4mm;
+        list-style: disc;
+      }
+
+      li {
+        margin-top: 0.8mm;
+        padding-left: 0.5mm;
+      }
+
+      li::before {
+        display: none;
+        content: none;
+      }
+
+      .skill-group + .skill-group {
+        margin-top: 1.5mm;
+      }
+
+      .eyebrow {
+        margin-bottom: 0.5mm;
+        color: #000;
+        font-size: 6.5pt;
+      }
+
+      .skill-list {
+        color: #111;
+        line-height: 1.4;
+      }
+
+      .project + .project {
+        margin-top: 1.8mm;
+        padding-top: 1.8mm;
+        border-top: 0.2mm solid #bbb;
+      }
+
+      .project h3 a::after {
+        content: none;
+      }
+
+      .project p,
+      .education p,
+      .note {
+        color: #333;
+        font-size: 7.1pt;
+      }
+
+      .education-meta {
+        color: #000 !important;
+      }
+
+      .footer {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <h1>Chetan Bhosale</h1>
+        <p class="role">Product Engineer · Founding Engineer at Linkrunner</p>
+      </div>
+      <div class="contact">
+        <a href="mailto:chetanbhosale810@gmail.com">chetanbhosale810@gmail.com</a>
+        <a href="https://github.com/ChetanBhosale">github.com/ChetanBhosale</a>
+        <a href="https://www.linkedin.com/in/chetan-bhosale-092868231/"
+          >linkedin.com/in/chetan-bhosale-092868231</a
+        >
+        <span>Bengaluru, India</span>
+      </div>
+    </header>
+
+    <p class="summary">
+      Product engineer who works from customer conversation to production.
+      Experienced across product discovery, interface engineering, distributed
+      systems, analytics, mobile SDKs, and cloud infrastructure. Former sales
+      professional who learned to build the products customers were asking for.
+    </p>
+
+    <main class="layout">
+      <div>
+        <section class="section">
+          <h2 class="section-title">Experience</h2>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Linkrunner</h3>
+                <p class="job-role">Founding Engineer</p>
+              </div>
+              <span class="date">Oct 2025 — Present</span>
+            </div>
+            <p class="company-context">
+              AI-powered mobile measurement platform · ₹5 Cr pre-seed led by
+              Titan Capital · Trusted by 100+ growth teams
+            </p>
+            <ul>
+              <li>
+                Own the customer-to-release product loop; rebuilt the core
+                dashboard <span class="strong">0 → 1 in 20 days</span> with
+                customers, design, and engineering.
+              </li>
+              <li>
+                Own SDKs across Android, iOS, React Native, Flutter, and
+                Cordova; built tooling that cut integration testing from
+                <span class="strong">~1 hour to ~5 minutes</span>.
+              </li>
+              <li>
+                Migrated analytics from PostgreSQL to ClickHouse, taking key
+                queries from seconds to milliseconds and saving up to
+                <span class="strong">$8K/month</span>.
+              </li>
+              <li>
+                Helped evolve the Node.js monolith into Go/gRPC services
+                processing <span class="strong">25M+ monthly requests</span>;
+                moved SQS → Kafka and AWS → GCP.
+              </li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>TransErg LLP → Petpooja</h3>
+                <p class="job-role">Software Engineer</p>
+              </div>
+              <span class="date">Jun 2024 — Sep 2025</span>
+            </div>
+            <p class="company-context">
+              Joined TransErg and continued at Petpooja after acquisition ·
+              150K+ businesses · 7M+ company orders/day · ₹137 Cr Series C
+            </p>
+            <ul>
+              <li>
+                Turned restaurant and hotel requirements into an online
+                ordering product handling
+                <span class="strong">~10K real orders/day</span>; also built
+                custom-domain infrastructure for branded storefronts.
+              </li>
+              <li>
+                Migrated manually managed EC2 services to Docker and then
+                production Kubernetes on EKS.
+              </li>
+              <li>
+                Led Petpooja Studio and its
+                <span class="strong">3M+ image library</span> delivered to
+                Zomato and Swiggy, coordinating specifications and SLAs.
+              </li>
+              <li>
+                Deployed a self-hosted LLM pipeline for image tagging, cleanup,
+                and quality checks at scale.
+              </li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Hire My Assistants</h3>
+                <p class="job-role">Sales & Marketing → Full-stack Engineer</p>
+              </div>
+              <span class="date">Dec 2022 — Jun 2023</span>
+            </div>
+            <ul>
+              <li>
+                Managed campaigns and negotiations for 10 realtor clients,
+                then built a CRM used by <span class="strong">1K+ realtors</span>
+                from the pain heard on sales calls.
+              </li>
+              <li>
+                Built property experiences serving approximately
+                <span class="strong">100K visitors/day</span>.
+              </li>
+            </ul>
+          </article>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section class="section">
+          <h2 class="section-title">Core Skills</h2>
+          <div class="skill-group">
+            <p class="eyebrow">Product</p>
+            <p class="skill-list">
+              Customer discovery · Requirement shaping · Design partnership ·
+              End-to-end ownership
+            </p>
+          </div>
+          <div class="skill-group">
+            <p class="eyebrow">Languages & Interface</p>
+            <p class="skill-list">
+              TypeScript · Go · JavaScript · Python · Next.js · React · React
+              Native · Flutter
+            </p>
+          </div>
+          <div class="skill-group">
+            <p class="eyebrow">Systems & Data</p>
+            <p class="skill-list">
+              Node.js · gRPC · Kafka · WebSockets · PostgreSQL · ClickHouse ·
+              Redis
+            </p>
+          </div>
+          <div class="skill-group">
+            <p class="eyebrow">Cloud</p>
+            <p class="skill-list">
+              Kubernetes · Docker · AWS · GCP · Grafana · Prometheus
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Selected Projects</h2>
+          <article class="project">
+            <h3><a href="https://trynakama.com">Nakama</a></h3>
+            <p>
+              Production-like Kubernetes and database sandboxes for AI agents
+              and security testing, using real masked data.
+            </p>
+          </article>
+          <article class="project">
+            <h3><a href="https://geo.repair">geo.repair</a></h3>
+            <p>
+              26-point AI crawler audit with an agent that applies fixes,
+              validates builds, and opens pull requests.
+            </p>
+          </article>
+          <article class="project">
+            <h3><a href="https://omeglefortech.com">OmegleForTech</a></h3>
+            <p>
+              GitHub-verified 1:1 developer video matching built with WebRTC
+              and real-time presence.
+            </p>
+          </article>
+        </section>
+
+        <section class="section education">
+          <h2 class="section-title">Education</h2>
+          <h3>St. Xavier's College, Ahmedabad</h3>
+          <p>Bachelor of Computer Applications</p>
+          <p class="education-meta">2021 — 2024 · 7.9 CGPA</p>
+        </section>
+
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>chetan-bhosale.vercel.app</span>
+      <span>Product · Engineering · Systems</span>
+    </footer>
+  </body>
+</html>
