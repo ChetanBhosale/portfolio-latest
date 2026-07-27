@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chetan Bhosale — Resume</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 9mm 11mm;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: "Iowan Old Style", "Charter", Georgia, serif;
+        font-size: 7.7pt;
+        line-height: 1.25;
+        color: #111;
+        background: #fff;
+        font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+      }
+
+      .sans {
+        font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      /* ============ HEADER ============ */
+
+      header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16pt;
+        padding-bottom: 5pt;
+        border-bottom: 1.6pt solid #111;
+      }
+
+      .name {
+        font-size: 24pt;
+        font-weight: 600;
+        line-height: 0.9;
+        letter-spacing: -0.025em;
+      }
+
+      .tagline {
+        margin-top: 5pt;
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 7.4pt;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #111;
+      }
+
+      .contact {
+        flex: 0 0 auto;
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 7.1pt;
+        line-height: 1.62;
+        text-align: right;
+        color: #3a3a3a;
+      }
+
+      .contact b {
+        font-weight: 600;
+        color: #111;
+      }
+
+      .summary {
+        margin-top: 5.5pt;
+        font-size: 7.9pt;
+        line-height: 1.36;
+        color: #1a1a1a;
+      }
+
+      .summary .lead {
+        font-weight: 600;
+      }
+
+      /* ============ SECTION + RAIL GRID ============ */
+
+      section {
+        margin-top: 6pt;
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 7pt;
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 7pt;
+        font-weight: 600;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: #111;
+      }
+
+      h2::after {
+        flex: 1;
+        height: 0.6pt;
+        background: #c4c4c4;
+        content: "";
+      }
+
+      /* two-column rail: dates left, content right */
+      .row {
+        display: grid;
+        grid-template-columns: 58pt 1fr;
+        gap: 10pt;
+        margin-top: 4.4pt;
+        break-inside: avoid;
+      }
+
+      .rail {
+        padding-top: 1.4pt;
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 6.9pt;
+        font-weight: 600;
+        line-height: 1.45;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #555;
+      }
+
+      .rail .sub {
+        display: block;
+        margin-top: 1.5pt;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: #8a8a8a;
+      }
+
+      .org {
+        font-size: 9.9pt;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+      }
+
+      .role {
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 7.3pt;
+        font-weight: 600;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: #333;
+      }
+
+      .note {
+        margin-top: 1pt;
+        font-size: 7.6pt;
+        font-style: italic;
+        color: #6b6b6b;
+      }
+
+      ul {
+        margin-top: 2.5pt;
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        margin-top: 1.5pt;
+        padding-left: 9pt;
+      }
+
+      li::before {
+        position: absolute;
+        top: 3.1pt;
+        left: 0;
+        width: 3pt;
+        height: 0.7pt;
+        background: #111;
+        content: "";
+      }
+
+      b {
+        font-weight: 600;
+      }
+
+      /* ============ PROJECTS ============ */
+
+      .proj-name {
+        font-size: 9.4pt;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .proj-body {
+        margin-top: 1pt;
+      }
+
+      .link {
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 6.9pt;
+        letter-spacing: 0.05em;
+        color: #777;
+      }
+
+      .dash {
+        margin: 0 1.5pt;
+        color: #999;
+      }
+
+      /* ============ SKILLS ============ */
+
+      .skills .row {
+        margin-top: 2.8pt;
+      }
+
+      /* ============ EDUCATION ============ */
+
+      .edu-line {
+        display: flex;
+        align-items: baseline;
+        gap: 6pt;
+      }
+
+      .cgpa {
+        font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+        font-size: 6.9pt;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        padding: 1pt 4pt;
+        border: 0.6pt solid #999;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div class="name">Chetan Bhosale</div>
+        <div class="tagline">Product Engineer</div>
+      </div>
+      <div class="contact">
+        <b>chetanbhosale.com</b><br />
+        chetanbhosale810@gmail.com<br />
+        github.com/ChetanBhosale<br />
+        linkedin.com/in/chetan-bhosale<br />
+        Bengaluru, India
+      </div>
+    </header>
+
+    <p class="summary">
+      <span class="lead">Product engineer who sits between customers, design, and production code.</span>
+      I started in sales, learned to build the tools customers kept asking for,
+      and never lost that loop — requirement calls, scope in Figma, ship, then
+      own what happens after launch. Founding engineer at Linkrunner, working
+      from React and React Native interfaces down to Go services, ClickHouse,
+      Kafka, and Kubernetes.
+    </p>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="row">
+        <div class="rail">
+          2025 — Now
+          <span class="sub">Bengaluru</span>
+        </div>
+        <div>
+          <div class="org">Linkrunner</div>
+          <div class="role">Founding Engineer</div>
+          <div class="note">
+            Mobile measurement &amp; attribution · ₹5 Cr pre-seed, Titan Capital
+            · 100+ growth teams
+          </div>
+          <ul>
+            <li>
+              Own the full product loop with customers and design: join
+              requirement calls, spot repeated friction, shape scope in Figma,
+              and carry the decision through engineering into release.
+            </li>
+            <li>
+              Rebuilt the core customer dashboard from <b>0 → 1</b> and migrated
+              every account onto it in <b>20 days</b>, using existing product,
+              APIs, and customer context to preserve behavior while improving
+              the experience.
+            </li>
+            <li>
+              Own a five-platform SDK fleet — Android, iOS, React Native,
+              Flutter, and Cordova — including the integration and release
+              developer experience.
+            </li>
+            <li>
+              Built an SDK console that cut attribution integration testing from
+              roughly <b>1 hour to about 5 minutes</b>, giving growth teams far
+              faster feedback while implementing.
+            </li>
+            <li>
+              Migrated analytics from PostgreSQL to <b>ClickHouse</b>, taking
+              key queries from <b>seconds to milliseconds</b> and reducing
+              infrastructure cost by as much as <b>$8,000 per month</b>.
+            </li>
+            <li>
+              Helped break the Node.js monolith into <b>Go</b> services using
+              gRPC, WAL-backed writes, and fallbacks, now serving more than
+              <b>25M requests per month</b>.
+            </li>
+            <li>
+              Moved event streaming from SQS to <b>Kafka</b> and contributed to
+              the wider infrastructure migration from <b>AWS to GCP</b>.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="rail">
+          2024 — 2025
+          <span class="sub">Ahmedabad</span>
+        </div>
+        <div>
+          <div class="org">Petpooja</div>
+          <div class="role">Software Engineer</div>
+          <div class="note">
+            Joined TransErg LLP as a Software Engineer; continued at Petpooja
+            after the acquisition · ₹137 Cr Series C, Dharana Capital · 150K+
+            businesses, 7M+ orders/day
+          </div>
+          <ul>
+            <li>
+              Worked directly with restaurant and hotel chains to turn their
+              ordering requirements into the <b>Online Ordering Widget</b>,
+              which handled roughly <b>10K real food orders every day</b>.
+            </li>
+            <li>
+              Built a domain-registry system that let restaurant brands connect
+              their own domains and run the ordering storefront as their own
+              customer-facing website.
+            </li>
+            <li>
+              Moved services off manually managed single EC2 instances into
+              Docker and then onto production <b>Kubernetes (EKS)</b>,
+              improving repeatability and operational ownership.
+            </li>
+            <li>
+              Served as <b>DRI for Petpooja Studio</b>, owning a library of
+              <b>3M+ food images</b> delivered to Zomato and Swiggy while
+              coordinating specifications and SLAs with their teams.
+            </li>
+            <li>
+              Deployed a <b>self-hosted LLM pipeline</b> to tag, clean, and
+              quality-check food images at scale, cutting the manual work needed
+              to operate the Studio library.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="rail">
+          2022 — 2023
+          <span class="sub">Remote</span>
+        </div>
+        <div>
+          <div class="org">Hire My Assistants</div>
+          <div class="role">Sales → Full-stack Engineer</div>
+          <div class="note">
+            Real-estate services · the transition from selling the product to
+            building it
+          </div>
+          <ul>
+            <li>
+              Managed sales and campaigns for <b>10 realtor clients</b>, then
+              used the pain heard on those calls to decide what to build first.
+            </li>
+            <li>
+              Shaped and shipped an internal CRM used by more than
+              <b>1,000 realtors</b>, prioritizing the parts of the funnel
+              customers struggled with most.
+            </li>
+            <li>
+              Built high-traffic property listing pages serving roughly
+              <b>100K visitors per day</b>.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+
+      <div class="row">
+        <div class="rail">
+          Private beta
+          <span class="sub">Cloud infra</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-name">Nakama</span>
+          <span class="link">· trynakama.com</span><span class="dash">—</span>
+          Production-like sandboxes for AI agents, security testing, and API
+          testing — with real, masked data and zero risk to production.
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="rail">
+          Live
+          <span class="sub">AI visibility</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-name">geo.repair</span>
+          <span class="link">· geo.repair</span><span class="dash">—</span>
+          A 26-point AI crawler audit that clones a repository, applies the
+          fixes, validates the build, and opens the pull request.
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="rail">
+          Live
+          <span class="sub">Developer social</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-name">OmegleForTech</span>
+          <span class="link">· omeglefortech.com</span><span class="dash">—</span>
+          Fast, GitHub-verified 1:1 video matching for developers, built on
+          WebRTC and real-time presence.
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="rail">
+          Building
+          <span class="sub">Prompt-to-product</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-name">Dovia</span>
+          <span class="link">· dovia-delta.vercel.app</span><span class="dash">—</span>
+          A multi-model app builder with iterative editing, live preview, and a
+          path from a single sentence to a deployed product.
+        </div>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2>Toolkit</h2>
+
+      <div class="row">
+        <div class="rail">Languages</div>
+        <div>TypeScript, Go, JavaScript, SQL</div>
+      </div>
+      <div class="row">
+        <div class="rail">Interface</div>
+        <div>React, Next.js, React Native, Flutter, Figma</div>
+      </div>
+      <div class="row">
+        <div class="rail">Systems</div>
+        <div>Node.js, gRPC, Kafka, WebSockets, REST, PostgreSQL, ClickHouse, Redis</div>
+      </div>
+      <div class="row">
+        <div class="rail">Cloud</div>
+        <div>Kubernetes, Docker, AWS, GCP</div>
+      </div>
+      <div class="row">
+        <div class="rail">Product</div>
+        <div>
+          Customer discovery, requirement shaping, design partnership, launch
+          and feedback
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+
+      <div class="row">
+        <div class="rail">
+          2021 — 2024
+          <span class="sub">Ahmedabad</span>
+        </div>
+        <div>
+          <div class="edu-line">
+            <span class="proj-name">St. Xavier&rsquo;s College</span>
+            <span class="cgpa">7.9 CGPA</span>
+          </div>
+          <div class="note">
+            Bachelor of Computer Applications (BCA) · Member of the 100xDevs
+            community
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

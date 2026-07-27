@@ -284,7 +284,7 @@ export function PortfolioLanding() {
             <div className="manifesto-grid">
               <div>
                 <h2 className="section-title">
-                  I started in sales.
+                  I started in sales.{" "}
                   <br />
                   <span>Then I learned to ship.</span>
                 </h2>
@@ -377,7 +377,7 @@ export function PortfolioLanding() {
             <SectionLabel index="03">INDEPENDENT BUILDS</SectionLabel>
             <div className="projects-heading">
               <h2 className="section-title">
-                Side projects,
+                Side projects,{" "}
                 <br />
                 <span>serious execution.</span>
               </h2>
@@ -422,7 +422,7 @@ export function PortfolioLanding() {
             <SectionLabel index="04">TOOLKIT</SectionLabel>
             <div className="stack-heading">
               <h2 className="section-title">
-                Broad enough for the whole product.
+                Broad enough for the whole product.{" "}
                 <br />
                 <span>Deep where it matters.</span>
               </h2>
@@ -451,7 +451,7 @@ export function PortfolioLanding() {
             <div className="about-intro">
               <SectionLabel index="05">OUTSIDE THE TERMINAL</SectionLabel>
               <h2 className="section-title">
-                There&apos;s more
+                There&apos;s more{" "}
                 <br />
                 <span>than the code.</span>
               </h2>
@@ -492,7 +492,7 @@ export function PortfolioLanding() {
               AVAILABLE FOR THE RIGHT PROBLEM
             </p>
             <h2>
-              Want to build something
+              Want to build something{" "}
               <br />
               <span>together?</span>
             </h2>
