@@ -1,528 +1,413 @@
 import Image from "next/image"
-import { ArrowDown, ArrowUpRight, Mail } from "lucide-react"
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6"
+import { ArrowUpRight, Mail } from "lucide-react"
+import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6"
 
+import { BengaluruClock, TerminalTicker } from "@/components/live-bits"
+import { Mascot } from "@/components/mascot"
+import { TechBadge } from "@/components/tech-badge"
 import { Reveal } from "@/components/ui/reveal"
 import { socials } from "@/lib/site"
+import { cn } from "@/lib/utils"
 
-const experience = [
+type Job = {
+  company: string
+  role: string
+  logo: string
+  logoClass?: string
+  href: string
+  about: string
+  bullets: string[]
+}
+
+const jobs: Job[] = [
   {
-    number: "01",
     company: "Linkrunner",
     role: "Founding Engineer",
-    period: "2025 — NOW",
-    description:
-      "Working directly with customers and design to shape, ship, and operate a mobile measurement platform trusted by 100+ growth teams.",
-    outcomes: [
-      "₹5 Cr pre-seed · Titan Capital",
-      "100+ growth teams",
-      "25M+ monthly requests",
-      "20-day dashboard rebuild",
-      "1 hour → 5 min testing",
-      "Seconds → milliseconds",
-      "$8K/month saved",
-    ],
-    bullets: [
-      "Own the product loop with customers and design: join requirement calls, identify repeated friction, shape the scope in Figma, and carry the decision through engineering and release.",
-      "Rebuilt the core customer dashboard from 0 → 1 and migrated it in 20 days, using the existing product, APIs, and customer context to preserve behavior while improving the experience.",
-      "Own a five-platform SDK fleet across Android, iOS, React Native, Flutter, and Cordova, including the developer experience around integration and release.",
-      "Built an SDK console that reduced integration testing from roughly 1 hour to about 5 minutes, giving growth teams much faster feedback while implementing attribution.",
-      "Migrated analytics from PostgreSQL to ClickHouse, taking key queries from seconds to milliseconds and reducing infrastructure cost by as much as $8,000 per month.",
-      "Helped break the Node.js monolith into Go services using gRPC, WAL-backed writes, and fallbacks for systems now processing more than 25M requests each month.",
-      "Moved event streaming from SQS to Kafka and contributed to the wider infrastructure migration from AWS to GCP.",
-    ],
+    logo: "/image/linkrunner-icon.png",
     href: "https://www.linkrunner.io",
+    about:
+      "Mobile measurement partner for growth teams: attribution, deep links, SKAN, and campaign analytics. $565K pre-seed led by Titan Capital, used by 100+ growth teams.",
+    bullets: [
+      "Own the product loop end to end: sit on customer calls, shape scope in Figma with design, ship it, then own what happens after launch.",
+      "Rebuilt the whole customer dashboard from 0 to 1 and migrated every account in 20 days.",
+      "Own the SDK fleet on five platforms (Android, iOS, React Native, Flutter, Cordova) and built an SDK console that cut integration testing from 1 hour to 5 minutes.",
+      "Moved analytics from Postgres to ClickHouse. Queries went from seconds to milliseconds and infra cost dropped by up to $8K a month.",
+      "Helping break the Node.js monolith into Go microservices (gRPC, WAL-backed writes) now serving 25M+ requests a month.",
+      "Moved event streaming from SQS to Kafka and helped move the infra from AWS to GCP.",
+    ],
   },
   {
-    number: "02",
-    company: "TransErg → Petpooja",
+    company: "Respan",
+    role: "Backend Engineer",
+    logo: "/image/respan-icon.png",
+    logoClass: "bg-white",
+    href: "https://www.respan.ai",
+    about:
+      "YC W24 AI engineering platform (formerly Keywords AI). One gateway for 1,000+ models, with tracing, monitoring, and evals for AI agents. Handles 2T+ tokens and 1B+ logs a month.",
+    bullets: [
+      "Backend engineer on the platform that sits between AI products and their LLM calls: gateway, tracing, and evals.",
+      "Working on services used by teams like Retell AI, Mem0, Gumloop, and Lovable.",
+    ],
+  },
+  {
+    company: "Petpooja (via TransErg)",
     role: "Software Engineer",
-    period: "2024 — 2025",
-    description:
-      "Joined TransErg LLP as a Software Engineer, then continued at Petpooja after the acquisition—turning restaurant requirements into products and production systems that held up at scale.",
-    outcomes: [
-      "₹137 Cr Series C · Dharana Capital",
-      "150K+ businesses",
-      "7M+ company orders/day",
-      "10K orders/day",
-      "3M+ images served",
-      "EKS migration",
-    ],
-    bullets: [
-      "Joined TransErg LLP as a Software Engineer and continued at Petpooja after the acquisition, working inside a restaurant-tech platform serving 150K+ businesses.",
-      "Worked with restaurant and hotel chains to turn their ordering requirements into the Online Ordering Widget, which handled roughly 10K real food orders every day.",
-      "Built a domain-registry system that allowed restaurant brands to connect their own domains and run the ordering storefront as their own customer-facing website.",
-      "Moved services from manually managed single EC2 instances into Docker and then onto production Kubernetes with EKS, improving repeatability and operational ownership.",
-      "Served as DRI for Petpooja Studio, owning a library of 3M+ food images delivered to Zomato and Swiggy while coordinating specifications and SLAs with their teams.",
-      "Deployed a self-hosted LLM pipeline to tag, clean, and quality-check food images at scale, reducing the manual work required to operate the Studio library.",
-    ],
+    logo: "/image/petpooja-icon.svg",
+    logoClass: "bg-white p-1.5",
     href: "https://www.petpooja.com",
+    about:
+      "Restaurant tech platform serving 150K+ businesses. Joined TransErg and continued at Petpooja after the acquisition.",
+    bullets: [
+      "Shipped the online ordering widget for restaurant and hotel chains, handling around 10K orders a day.",
+      "Owned Petpooja Studio: 3M+ food images delivered to Zomato and Swiggy, cleaned and tagged by a self-hosted LLM pipeline.",
+      "Moved services from hand-managed EC2 boxes to Docker and then EKS.",
+    ],
   },
   {
-    number: "03",
     company: "Hire My Assistants",
-    role: "Sales → Full-stack",
-    period: "2022 — 2023",
-    description:
-      "Used first-hand insight from sales calls to decide what to build first, then shipped the CRM and property experiences realtors needed.",
-    outcomes: ["1K+ CRM users", "100K daily visitors", "Customer-led product"],
-    bullets: [
-      "Managed sales and campaigns for 10 realtor clients before moving into engineering.",
-      "Used the pain heard on customer calls to shape an internal CRM used by more than 1,000 realtors.",
-      "Built high-traffic property listing pages serving roughly 100K visitors per day.",
-      "Prioritized the parts of the funnel customers struggled with most, then shipped those improvements first.",
-    ],
+    role: "Sales, then Full-stack Engineer",
+    logo: "/image/hiremyassistants-logo.png",
+    logoClass: "bg-white p-1.5",
     href: "https://www.hiremyassistants.com/index.html",
+    about:
+      "Joined in sales and marketing, then moved to engineering once they found out I could code.",
+    bullets: [
+      "Built the internal CRM used by 1,000+ realtors, straight from what I heard on sales calls.",
+      "Built property listing pages serving around 100K visitors a day.",
+    ],
   },
 ]
 
 const projects = [
   {
-    index: "01",
     name: "Nakama",
-    category: "Cloud infrastructure",
-    status: "PRIVATE BETA",
+    status: "Private beta",
     description:
-      "Production-like sandboxes for AI agents, security testing, and API testing—with real, masked data and zero risk to prod.",
+      "Clone your prod stack into safe sandboxes with real masked data, for AI agents, security testing, and API testing.",
     href: "https://trynakama.com",
   },
   {
-    index: "02",
-    name: "geo.repair",
-    category: "AI visibility",
-    status: "LIVE",
+    name: "keybro",
+    status: "macOS",
     description:
-      "A 26-point AI crawler audit that can clone a repository, apply fixes, validate the build, and open the pull request.",
+      "Menu bar app that puts Claude Code in any text field, with a local memory your sessions can share.",
+    href: "https://github.com/ChetanBhosale/keybro",
+  },
+  {
+    name: "geo.repair",
+    status: "Live",
+    description:
+      "AI crawler audit that clones your repo, applies the fixes, checks the build, and opens the PR.",
     href: "https://geo.repair",
   },
   {
-    index: "03",
-    name: "OmegleForTech",
-    category: "Developer social",
-    status: "LIVE",
+    name: "CleanMac",
+    status: "macOS",
     description:
-      "Fast, GitHub-verified 1:1 video matching for developers, built on WebRTC and real-time presence.",
+      "Native storage cleaner that finds what other cleaners miss and explains every file in plain words.",
+    href: "https://github.com/ChetanBhosale/cleanmac",
+  },
+  {
+    name: "OmegleForTech",
+    status: "Live",
+    description:
+      "GitHub-verified 1:1 video chat for developers, peer to peer over WebRTC.",
     href: "https://omeglefortech.com",
   },
   {
-    index: "04",
     name: "Dovia",
-    category: "Prompt-to-product",
-    status: "BUILDING",
+    status: "Building",
     description:
-      "A multi-model app builder with iterative editing, live preview, and a path from a sentence to a deployed product.",
+      "Prompt-to-app builder with multi-model routing, live preview, and one-click deploy.",
     href: "https://dovia-delta.vercel.app",
   },
 ]
 
 const stack = [
-  {
-    label: "PRODUCT",
-    items: [
-      "Customer understanding",
-      "Product discovery",
-      "Requirement shaping",
-      "Design partnership",
-      "Launch & feedback",
-    ],
-  },
-  {
-    label: "INTERFACE",
-    items: ["TypeScript", "Next.js", "React", "React Native", "Flutter"],
-  },
-  {
-    label: "SYSTEMS",
-    items: ["Go", "Node.js", "gRPC", "Kafka", "WebSockets"],
-  },
-  {
-    label: "DATA + CLOUD",
-    items: ["PostgreSQL", "ClickHouse", "Redis", "Kubernetes", "AWS", "GCP"],
-  },
+  "TypeScript",
+  "Go",
+  "Python",
+  "React",
+  "Next.js",
+  "React Native",
+  "Node.js",
+  "Kafka",
+  "PostgreSQL",
+  "ClickHouse",
+  "Redis",
+  "Kubernetes",
+  "Docker",
+  "AWS",
+  "GCP",
 ]
 
-function SectionLabel({
-  index,
+const links = [
+  { label: "GitHub", href: socials.github, icon: FaGithub },
+  { label: "LinkedIn", href: socials.linkedin, icon: FaLinkedinIn },
+  { label: "X", href: socials.x, icon: FaXTwitter },
+]
+
+const nav = [
+  { label: "Work", href: "#work" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+]
+
+function Section({
+  id,
+  title,
   children,
 }: {
-  index: string
+  id?: string
+  title: string
   children: React.ReactNode
 }) {
   return (
-    <div className="section-label">
-      <span>{index}</span>
-      <span>{children}</span>
-      <span className="section-label-line" />
-    </div>
+    <section id={id} className="border-t border-border py-14">
+      <Reveal>
+        <h2 className="mb-8 text-sm font-medium text-subtle">{title}</h2>
+        {children}
+      </Reveal>
+    </section>
   )
-}
-
-function ExternalArrow() {
-  return <ArrowUpRight aria-hidden className="size-[0.9em] shrink-0" />
 }
 
 export function PortfolioLanding() {
   return (
-    <>
-      <header className="site-nav">
-        <a href="#top" className="brand-mark" aria-label="Chetan Bhosale, home">
-          Chetan<span className="brand-slash">.Dev</span>
-        </a>
-
-        <nav aria-label="Main navigation" className="site-nav-links">
-          <a href="#work">Work</a>
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-        </nav>
-
-        <div className="nav-socials">
-          <a
-            href={socials.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Chetan on GitHub"
-            title="GitHub"
-          >
-            <FaGithub aria-hidden />
+    <div className="relative isolate min-h-svh">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(255,255,255,0.09),transparent)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_0%,black,transparent)] [background-size:24px_24px]"
+      />
+      <header className="sticky top-4 z-40 mx-auto max-w-4xl px-6">
+        <div className="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-background/60 py-2 pr-2 pl-5 shadow-lg shadow-black/40 backdrop-blur-xl">
+          <a href="#top" aria-label="Back to top" className="min-w-0 truncate">
+            <TerminalTicker />
           </a>
-          <a
-            href={socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Chetan on LinkedIn"
-            title="LinkedIn"
+          <nav
+            aria-label="Main navigation"
+            className="flex shrink-0 items-center"
           >
-            <FaLinkedinIn aria-hidden />
-          </a>
-          <a
-            href={`mailto:${socials.email}`}
-            aria-label="Email Chetan"
-            title="Email"
-          >
-            <Mail aria-hidden />
-          </a>
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 
-      <main id="top">
-        <section className="hero-shell">
-          <div className="hero-grid" aria-hidden />
-          <div className="hero-content">
-            <div className="hero-personal-grid">
-              <div className="hero-message">
-                <div className="hero-kicker">
-                  <span className="availability-dot" />
-                  Hello, I&apos;m Chetan · Bengaluru, India
-                </div>
-
-                <h1 className="hero-title">
-                  Chetan Bhosale.
-                  <br />
-                  <span>Product engineer.</span>
+      <div className="mx-auto w-full max-w-4xl px-6 pb-24">
+        <main id="top">
+          <section className="animate-in py-14 duration-500 fade-in sm:py-20">
+            <div className="flex flex-col-reverse gap-10 md:flex-row md:items-center md:justify-between">
+              <div className="min-w-0">
+                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                  Chetan Bhosale
                 </h1>
+                <p className="mt-3 text-lg text-muted-foreground sm:text-xl">
+                  Founding Engineer at{" "}
+                  <span className="text-foreground">Linkrunner</span>. Backend
+                  at{" "}
+                  <span className="whitespace-nowrap">
+                    <span className="text-foreground">Respan</span> (YC W24).
+                  </span>
+                </p>
+                <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">
+                  Ex sales guy who learned to code. I sit with customers, work
+                  with design, and ship the whole thing, from the React screen
+                  down to Go services, Kafka, and ClickHouse.
+                </p>
+                <p className="mt-4 text-sm text-subtle">
+                  Bengaluru, India <span className="mx-1.5">·</span>
+                  <BengaluruClock />
+                </p>
 
-                <div className="hero-lower">
-                  <p className="hero-intro">
-                    I work with customers, designers, and code to turn fuzzy
-                    requirements into products people can actually use.
-                    Currently a founding engineer at Linkrunner.
-                  </p>
-
-                  <div className="hero-actions">
-                    <a href="#work" className="primary-link">
-                      See my work
-                      <ArrowDown aria-hidden className="size-4" />
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+                  <a
+                    href={`mailto:${socials.email}`}
+                    className="inline-flex h-9 items-center gap-2 rounded-md bg-foreground px-4 font-medium text-background transition-opacity hover:opacity-85"
+                  >
+                    <Mail aria-hidden className="size-4" />
+                    Email me
+                  </a>
+                  {links.map(({ label, href, icon: Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Icon aria-hidden className="size-4" />
+                      {label}
                     </a>
-                    <a href="#about" className="text-link">
-                      More about me
-                      <ArrowDown aria-hidden className="size-[0.9em]" />
-                    </a>
-                  </div>
+                  ))}
                 </div>
               </div>
-
-              <div className="hero-portrait-card">
-                <Image
-                  src="/image/gibli.png"
-                  alt="Illustrated portrait of Chetan Bhosale"
-                  width={1024}
-                  height={1536}
-                  priority
-                  sizes="(max-width: 900px) 80vw, 25vw"
-                />
-                <div className="hero-portrait-caption">
-                  <span>NOW</span>
-                  <strong>Founding Engineer @ Linkrunner</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero-meta">
-            <div>
-              <span>CURRENTLY</span>
-              <strong>Founding Engineer</strong>
-            </div>
-            <div>
-              <span>BASED IN</span>
-              <strong>Bengaluru, India</strong>
-            </div>
-            <div>
-              <span>BACKGROUND</span>
-              <strong>Sales → Engineering</strong>
-            </div>
-            <div>
-              <span>OFF THE CLOCK</span>
-              <strong className="status-value">Music, MMA & games</strong>
-            </div>
-          </div>
-        </section>
-
-        <Reveal>
-          <section className="content-section manifesto-section">
-            <SectionLabel index="01">ABOUT ME</SectionLabel>
-
-            <div className="manifesto-grid">
-              <div>
-                <h2 className="section-title">
-                  I started in sales.{" "}
-                  <br />
-                  <span>Then I learned to ship.</span>
-                </h2>
-                <p className="section-copy">
-                  My first useful product lessons came from customer calls, not
-                  a codebase. I was managing campaigns for realtors when I
-                  started building the tools they kept asking for. That move
-                  from hearing the problem to shipping the solution became the
-                  way I work.
-                </p>
-                <p className="section-copy compact">
-                  Today I move comfortably between customer conversations,
-                  product decisions, Figma, APIs, infrastructure, and
-                  production—without losing sight of why we&apos;re building.
-                </p>
-              </div>
-
-              <div className="deliverables">
-                <p className="micro-label">WHAT STAYED WITH ME</p>
-                {[
-                  "Understand the customer first",
-                  "Shape the product, not just the ticket",
-                  "Stay close to design",
-                  "Own what happens after launch",
-                ].map((item, index) => (
-                  <div key={item} className="deliverable-row">
-                    <span className="deliverable-icon">
-                      <span />
-                    </span>
-                    <span>{item}</span>
-                    <span className="deliverable-index">0{index + 1}</span>
-                  </div>
-                ))}
-              </div>
+              <Image
+                src="/image/gibli.png"
+                alt="Illustrated portrait of Chetan Bhosale"
+                width={1024}
+                height={1536}
+                priority
+                sizes="(max-width: 768px) 160px, 224px"
+                className="aspect-[4/5] w-40 shrink-0 rounded-2xl border border-border object-cover object-[50%_20%] md:w-56"
+              />
             </div>
           </section>
-        </Reveal>
 
-        <section id="work" className="content-section work-section">
-          <Reveal>
-            <SectionLabel index="02">SELECTED EXPERIENCE</SectionLabel>
-          </Reveal>
-
-          <div className="experience-list">
-            {experience.map((item) => (
-              <Reveal key={item.company}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="experience-card"
+          <Section id="work" title="Work">
+            <div className="space-y-12">
+              {jobs.map((job) => (
+                <article
+                  key={job.company}
+                  className="grid gap-4 sm:grid-cols-[2.5rem_1fr] sm:gap-5"
                 >
-                  <div className="experience-card-head">
-                    <span className="experience-number">{item.number}</span>
-                    <div className="experience-heading">
-                      <h3>{item.company}</h3>
-                      <p>{item.role}</p>
-                    </div>
-                    <span className="experience-period">{item.period}</span>
-                    <span className="experience-arrow">
-                      <ExternalArrow />
-                    </span>
-                  </div>
-
-                  <div className="experience-card-body">
-                    <p className="experience-description">{item.description}</p>
-                    <ul>
-                      {item.bullets.map((bullet) => (
-                        <li key={bullet}>
-                          <span>↳</span>
+                  <span
+                    className={cn(
+                      "grid size-10 place-items-center overflow-hidden rounded-lg border border-border",
+                      job.logoClass
+                    )}
+                  >
+                    <Image
+                      src={job.logo}
+                      alt={`${job.company} logo`}
+                      width={80}
+                      height={80}
+                      className="max-h-full w-auto object-contain"
+                    />
+                  </span>
+                  <div>
+                    <h3 className="font-medium">
+                      <a
+                        href={job.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group inline-flex items-center gap-1"
+                      >
+                        {job.company}
+                        <ArrowUpRight
+                          aria-hidden
+                          className="size-3.5 text-subtle transition-colors group-hover:text-foreground"
+                        />
+                      </a>
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{job.role}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {job.about}
+                    </p>
+                    <ul className="mt-3 space-y-1.5">
+                      {job.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="relative pl-4 text-sm leading-relaxed text-muted-foreground before:absolute before:top-[0.6em] before:left-0 before:size-1 before:rounded-full before:bg-subtle"
+                        >
                           {bullet}
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  <div className="experience-outcomes">
-                    {item.outcomes.map((outcome) => (
-                      <span key={outcome}>{outcome}</span>
-                    ))}
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="content-section projects-section">
-          <Reveal>
-            <SectionLabel index="03">INDEPENDENT BUILDS</SectionLabel>
-            <div className="projects-heading">
-              <h2 className="section-title">
-                Side projects,{" "}
-                <br />
-                <span>serious execution.</span>
-              </h2>
-              <p className="section-copy">
-                Small teams and sharp ideas are my favorite environment. These
-                are products I&apos;m designing, engineering, and pushing into
-                the world.
-              </p>
+                </article>
+              ))}
             </div>
-          </Reveal>
+          </Section>
 
-          <div className="project-list">
-            {projects.map((project) => (
-              <Reveal key={project.name}>
+          <Section id="projects" title="Projects">
+            <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {projects.map((project) => (
                 <a
+                  key={project.name}
                   href={project.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="project-row"
+                  className="group block"
                 >
-                  <span className="project-index">{project.index}</span>
-                  <div className="project-name">
-                    <h3>{project.name}</h3>
-                    <span>{project.category}</span>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="inline-flex items-center gap-1 font-medium">
+                      {project.name}
+                      <ArrowUpRight
+                        aria-hidden
+                        className="size-3.5 text-subtle transition-colors group-hover:text-foreground"
+                      />
+                    </h3>
+                    <span className="text-xs text-subtle">
+                      {project.status}
+                    </span>
                   </div>
-                  <p>{project.description}</p>
-                  <span className="project-status">
-                    <i />
-                    {project.status}
-                  </span>
-                  <span className="project-arrow">
-                    <ExternalArrow />
-                  </span>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
                 </a>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
-        <Reveal>
-          <section className="content-section stack-section">
-            <SectionLabel index="04">TOOLKIT</SectionLabel>
-            <div className="stack-heading">
-              <h2 className="section-title">
-                Broad enough for the whole product.{" "}
-                <br />
-                <span>Deep where it matters.</span>
-              </h2>
-            </div>
-
-            <div className="stack-grid">
-              {stack.map((group, groupIndex) => (
-                <div key={group.label} className="stack-group">
-                  <div className="stack-group-head">
-                    <span>0{groupIndex + 1}</span>
-                    <h3>{group.label}</h3>
-                  </div>
-                  <ul>
-                    {group.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
               ))}
             </div>
-          </section>
-        </Reveal>
+          </Section>
 
-        <Reveal>
-          <section id="about" className="content-section about-section">
-            <div className="about-intro">
-              <SectionLabel index="05">OUTSIDE THE TERMINAL</SectionLabel>
-              <h2 className="section-title">
-                There&apos;s more{" "}
-                <br />
-                <span>than the code.</span>
-              </h2>
+          <Section title="Stack">
+            <div className="flex flex-wrap gap-2">
+              {stack.map((item) => (
+                <TechBadge key={item} name={item} mono />
+              ))}
             </div>
+          </Section>
 
-            <div className="about-copy">
+          <Section id="about" title="About">
+            <div className="max-w-2xl space-y-4 leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m usually making music, drawing, gaming, trying a new
-                recipe, or planning the next place to travel. Curiosity tends
-                to spill into everything.
+                I started in sales, running campaigns for realtors. Then they
+                found out I could code, and I started building the tools they
+                kept asking for. Hearing the problem first and then shipping the
+                fix is still how I work.
               </p>
               <p>
-                Martial arts has been the longest-running thread. I&apos;ve won
-                three national karate golds, which probably explains my
-                patience for difficult systems and long debugging sessions.
+                Outside work I make music, draw, game, cook, and plan the next
+                trip. Martial arts is the longest running thread: I&apos;ve won
+                three national karate golds.
               </p>
-
-              <div className="social-links">
-                <a href={socials.github} target="_blank" rel="noreferrer">
-                  <FaGithub aria-hidden />
-                  GitHub
-                  <ExternalArrow />
-                </a>
-                <a href={socials.linkedin} target="_blank" rel="noreferrer">
-                  <FaLinkedinIn aria-hidden />
-                  LinkedIn
-                  <ExternalArrow />
-                </a>
-              </div>
             </div>
-          </section>
-        </Reveal>
+          </Section>
 
-        <section id="contact" className="contact-section">
-          <Reveal>
-            <p className="contact-kicker">
-              <span className="availability-dot" />
-              AVAILABLE FOR THE RIGHT PROBLEM
+          <Section id="contact" title="Contact">
+            <p className="max-w-2xl leading-relaxed text-muted-foreground">
+              Got a product idea or a hard backend problem? Email me at{" "}
+              <a
+                href={`mailto:${socials.email}`}
+                className="text-foreground underline decoration-subtle underline-offset-4 transition-colors hover:decoration-foreground"
+              >
+                {socials.email}
+              </a>
+              .
             </p>
-            <h2>
-              Want to build something{" "}
-              <br />
-              <span>together?</span>
-            </h2>
-            <a href={`mailto:${socials.email}`} className="contact-email">
-              <Mail aria-hidden />
-              {socials.email}
-              <ExternalArrow />
-            </a>
-          </Reveal>
-        </section>
-      </main>
+          </Section>
+        </main>
 
-      <footer className="site-footer">
-        <a href="#top" className="brand-mark">
-          Chetan<span className="brand-slash">.Dev</span>
-        </a>
-        <p>Product engineer. Built with intent.</p>
-        <div>
-          <a href={socials.github} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href={socials.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a href={socials.x} target="_blank" rel="noreferrer">
-            X / Twitter
-          </a>
-        </div>
-        <span>© 2026 Chetan Bhosale</span>
-      </footer>
-    </>
+        <footer className="flex flex-col justify-between gap-4 border-t border-border pt-8 text-sm text-subtle sm:flex-row">
+          <span>© 2026 Chetan Bhosale</span>
+          <div className="flex gap-6">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </footer>
+      </div>
+
+      <Mascot />
+    </div>
   )
 }

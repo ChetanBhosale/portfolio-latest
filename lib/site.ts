@@ -4,14 +4,14 @@ export const siteUrl =
 export const siteName = "Chetan Bhosale"
 
 export const siteDescription =
-  "Product engineer working with clients and design teams to turn requirements into shipped products. Founding engineer at Linkrunner. TypeScript, Go, React Native, ClickHouse, Kafka, Kubernetes, and AI systems."
+  "Founding engineer at Linkrunner. I work with customers and design teams to turn requirements into shipped products. TypeScript, Go, React Native, ClickHouse, Kafka, Kubernetes, and AI systems."
 
 export const siteKeywords = [
   "Chetan Bhosale",
+  "founding engineer",
   "product engineer",
   "full stack engineer",
   "software engineer",
-  "founding engineer",
   "Linkrunner",
   "TypeScript",
   "Go",

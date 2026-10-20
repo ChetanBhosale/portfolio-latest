@@ -13,10 +13,10 @@ export function Reveal({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98], delay }}
+      transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98], delay }}
       className={className}
     >
       {children}
