@@ -44,20 +44,20 @@ const icons: Record<string, IconEntry> = {
   Python: { icon: SiPython, color: "#3776AB" },
   Go: { icon: SiGo, color: "#00ADD8" },
   "Node.js": { icon: SiNodedotjs, color: "#5FA04E" },
-  Express: { icon: SiExpress, color: "#454545" },
+  Express: { icon: SiExpress, color: "#E5E5E5" },
   GraphQL: { icon: SiGraphql, color: "#E10098" },
   tRPC: { icon: SiTrpc, color: "#2596BE" },
-  "Next.js": { icon: SiNextdotjs, color: "#171717" },
+  "Next.js": { icon: SiNextdotjs, color: "#E5E5E5" },
   React: { icon: SiReact, color: "#149ECA" },
   "React Native": { icon: SiReact, color: "#149ECA" },
   Tailwind: { icon: SiTailwindcss, color: "#06B6D4" },
-  "shadcn/ui": { icon: SiShadcnui, color: "#171717" },
+  "shadcn/ui": { icon: SiShadcnui, color: "#E5E5E5" },
   PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
   ClickHouse: { icon: SiClickhouse, color: "#B8A000" },
   Flutter: { icon: SiFlutter, color: "#02569B" },
   Redis: { icon: SiRedis, color: "#FF4438" },
   MongoDB: { icon: SiMongodb, color: "#47A248" },
-  Kafka: { icon: SiApachekafka, color: "#231F20" },
+  Kafka: { icon: SiApachekafka, color: "#E5E5E5" },
   Kubernetes: { icon: SiKubernetes, color: "#326CE5" },
   Docker: { icon: SiDocker, color: "#2496ED" },
   Grafana: { icon: SiGrafana, color: "#F46800" },
@@ -65,20 +65,22 @@ const icons: Record<string, IconEntry> = {
   Nginx: { icon: SiNginx, color: "#009639" },
   AWS: { icon: FaAws, color: "#FF9900" },
   GCP: { icon: SiGooglecloud, color: "#4285F4" },
-  WebRTC: { icon: SiWebrtc, color: "#333333" },
-  "AI / LLMs": { icon: Sparkles, color: "var(--ember)" },
+  WebRTC: { icon: SiWebrtc, color: "#E5E5E5" },
+  "AI / LLMs": { icon: Sparkles, color: "#A78BFA" },
   Claude: { icon: SiClaude, color: "#D97757" },
-  LangChain: { icon: SiLangchain, color: "#1C3C3C" },
-  MCP: { icon: SiModelcontextprotocol, color: "#454545" },
-  WebSockets: { icon: SiSocketdotio, color: "#454545" },
+  LangChain: { icon: SiLangchain, color: "#E5E5E5" },
+  MCP: { icon: SiModelcontextprotocol, color: "#E5E5E5" },
+  WebSockets: { icon: SiSocketdotio, color: "#E5E5E5" },
   "GitHub Actions": { icon: SiGithubactions, color: "#2088FF" },
 }
 
 export function TechBadge({
   name,
+  mono,
   className,
 }: {
   name: string
+  mono?: boolean
   className?: string
 }) {
   const entry = icons[name]
@@ -87,12 +89,15 @@ export function TechBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground transition-all hover:border-ember/50 hover:text-foreground",
+        "inline-flex items-center gap-2 rounded-md border border-border px-2.5 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground",
         className
       )}
     >
       {Icon && (
-        <Icon className="size-3.5 shrink-0" style={{ color: entry.color }} />
+        <Icon
+          className="size-4 shrink-0"
+          style={mono ? undefined : { color: entry.color }}
+        />
       )}
       {name}
     </span>

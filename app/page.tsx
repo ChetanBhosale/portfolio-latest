@@ -7,7 +7,7 @@ const personJsonLd = {
   name: siteName,
   url: siteUrl,
   image: `${siteUrl}/image/gibli.png`,
-  jobTitle: "Product Engineer",
+  jobTitle: "Founding Engineer",
   description: siteDescription,
   email: `mailto:${socials.email}`,
   worksFor: {

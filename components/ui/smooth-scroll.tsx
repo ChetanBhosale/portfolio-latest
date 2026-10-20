@@ -4,7 +4,7 @@ import { ReactLenis } from "lenis/react"
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis root options={{ lerp: 0.12, duration: 1.1, smoothWheel: true }}>
+    <ReactLenis root options={{ lerp: 0.1, smoothWheel: true, anchors: { offset: -80 } }}>
       {children}
     </ReactLenis>
   )
