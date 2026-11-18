@@ -8,7 +8,7 @@ Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies.
 
 - `index.html`: the page (content, SEO meta, JSON-LD, inline SVG icons)
 - `styles.css`: all styles
-- `script.js`: header ticker, Bengaluru clock, scroll reveal, walking mascot
+- `script.js`: header ticker, Bengaluru clock, scroll reveal
 - `image/`, `resume/`, `icon.svg`, `llms.txt`, `robots.txt`, `sitemap.xml`: static assets
 - `vercel.json`: static hosting on Vercel, plus `/resume` serving the PDF
 

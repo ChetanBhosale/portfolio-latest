@@ -517,78 +517,6 @@ main {
   transform: none;
 }
 
-/* Mascot */
-.mascot {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 50;
-  display: none;
-  pointer-events: none;
-  transform: translateX(24px);
-}
-
-.mascot-btn {
-  display: block;
-  pointer-events: auto;
-}
-
-.bubble {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-bottom: 0.25rem;
-  padding: 0.25rem 0.625rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.5rem;
-  background: rgba(24, 24, 27, 0.95);
-  color: #e4e4e7;
-  font-family: var(--mono);
-  font-size: 11px;
-  white-space: nowrap;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-  transform: translateX(-50%);
-  animation: bubble-in 0.2s ease both;
-}
-
-.bubble[hidden] {
-  display: none;
-}
-
-.mascot-leg,
-.mascot-arm,
-.mascot-wave,
-.mascot-blink {
-  transform-box: fill-box;
-  transform-origin: top center;
-}
-
-.mascot-blink {
-  transform-origin: center;
-  animation: mascot-blink 4s infinite;
-}
-
-.mascot-leg {
-  animation: mascot-step 0.5s ease-in-out infinite;
-}
-
-.mascot-leg-alt,
-.mascot-arm {
-  animation: mascot-step 0.5s ease-in-out infinite reverse;
-}
-
-.mascot-wave {
-  animation: mascot-wave 0.4s ease-in-out infinite;
-}
-
-.mascot-bob {
-  animation: mascot-bob 0.25s ease-in-out infinite;
-}
-
-.mascot-screen {
-  animation: mascot-screen 0.8s steps(2) infinite;
-}
-
 /* Breakpoints */
 @media (min-width: 640px) {
   .hero {
@@ -616,10 +544,6 @@ main {
   .site-footer {
     flex-direction: row;
   }
-
-  .mascot {
-    display: block;
-  }
 }
 
 @media (min-width: 768px) {
@@ -642,36 +566,6 @@ main {
 
 @keyframes pulse {
   50% { opacity: 0.5; }
-}
-
-@keyframes bubble-in {
-  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
-  to { opacity: 1; transform: translateX(-50%) scale(1); }
-}
-
-@keyframes mascot-step {
-  0%, 100% { transform: rotate(22deg); }
-  50% { transform: rotate(-22deg); }
-}
-
-@keyframes mascot-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1.5px); }
-}
-
-@keyframes mascot-wave {
-  0%, 100% { transform: rotate(-150deg); }
-  50% { transform: rotate(-110deg); }
-}
-
-@keyframes mascot-blink {
-  0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.1); }
-}
-
-@keyframes mascot-screen {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
