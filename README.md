@@ -1,37 +1,26 @@
 # portfolio-latest
 
-Personal portfolio of **Chetan Bhosale** — full stack software engineer, founding engineer at [Linkrunner](https://www.linkrunner.io).
+Personal portfolio of **Chetan Bhosale**, founding engineer at [Linkrunner](https://www.linkrunner.io).
 
-Cream paper theme, document-style layout, smooth scrolling, and small motion touches everywhere.
+Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies.
 
-## Stack
+## Files
 
-- [Next.js 16](https://nextjs.org) (App Router, Turbopack) + React 19 + TypeScript
-- [Tailwind CSS v4](https://tailwindcss.com) + shadcn/ui
-- [motion](https://motion.dev) for animations, [lenis](https://lenis.darkroom.engineering) for smooth scrolling
-- [react-icons](https://react-icons.github.io/react-icons/) for brand tech badges
-- [Bun](https://bun.sh) as package manager and runtime
+- `index.html`: the page (content, SEO meta, JSON-LD, inline SVG icons)
+- `styles.css`: all styles
+- `script.js`: header ticker, Bengaluru clock, scroll reveal, walking mascot
+- `image/`, `resume/`, `icon.svg`, `llms.txt`, `robots.txt`, `sitemap.xml`: static assets
+- `vercel.json`: static hosting on Vercel, plus `/resume` serving the PDF
 
-## Features
-
-- Hover preview cards (Aceternity style) on company links with logos, funding facts, and site screenshots
-- Animated expand/collapse experience table
-- Scroll-reveal sections, scroll progress bar, 3D tilt photo, flip-words
-- SEO: Open Graph + Twitter cards, JSON-LD person schema, sitemap, robots.txt, and `llms.txt` for AI crawlers
-
-## Development
+## Run locally
 
 ```bash
-bun install
-bun run dev
+python3 -m http.server 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:8000](http://localhost:8000).
 
-```bash
-bun run typecheck   # tsc --noEmit
-bun run lint        # eslint
-bun run build       # production build
-```
+## Deploy
 
-Set `NEXT_PUBLIC_SITE_URL` to the deployed URL so metadata, sitemap, and JSON-LD point at the right domain.
+Upload the folder to any static host. On Vercel it deploys as a static site with no build.
+For nginx, copy the folder to the web root.

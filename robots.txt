@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://chetan-bhosale.vercel.app/sitemap.xml
