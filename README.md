@@ -22,5 +22,11 @@ Open [http://localhost:8000](http://localhost:8000).
 
 ## Deploy
 
-Upload the folder to any static host. On Vercel it deploys as a static site with no build.
-For nginx, copy the folder to the web root.
+Every push to `main` deploys to the Oracle VM through `.github/workflows/deploy-oracle.yml`
+(rsync over SSH, then a smoke test). Files listed in `.deployignore` are not uploaded.
+It can also be run by hand from the Actions tab.
+
+Secrets used: `ORACLE_VM_HOST`, `ORACLE_VM_SSH_KEY` (deploy key that can only rsync into
+`/var/www/portfolio`), `ORACLE_VM_KNOWN_HOSTS`.
+
+On Vercel it deploys as a static site with no build.

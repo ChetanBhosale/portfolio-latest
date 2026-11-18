@@ -1,0 +1,7 @@
+.git/
+.github/
+.gitignore
+.deployignore
+.DS_Store
+README.md
+vercel.json

@@ -1,0 +1,52 @@
+name: Deploy to Oracle VM
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-oracle
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up SSH
+        env:
+          SSH_KEY: ${{ secrets.ORACLE_VM_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.ORACLE_VM_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      # The deploy key is locked to rrsync on /var/www/portfolio, so the target path is relative to it.
+      - name: Sync site
+        env:
+          VM_HOST: ${{ secrets.ORACLE_VM_HOST }}
+        run: |
+          rsync -rlptvz --delete --chmod=D755,F644 \
+            --exclude-from=.deployignore \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            ./ "ubuntu@${VM_HOST}:"
+
+      - name: Smoke test
+        env:
+          VM_HOST: ${{ secrets.ORACLE_VM_HOST }}
+        run: |
+          curl -fsS --retry 5 --retry-delay 3 "http://${VM_HOST}/" | grep -q "Chetan Bhosale"
+          curl -fsS -o /dev/null "http://${VM_HOST}/styles.css"
+          curl -fsS -o /dev/null "http://${VM_HOST}/resume"
+
+      - name: Clean up key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
