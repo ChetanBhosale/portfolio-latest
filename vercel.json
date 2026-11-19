@@ -5,15 +5,45 @@
   "installCommand": null,
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/resume", "destination": "/resume/chetan-bhosale-resume.pdf" }
+    {
+      "source": "/resume",
+      "destination": "/resume/chetan-bhosale-resume.pdf"
+    }
   ],
   "headers": [
     {
       "source": "/resume",
       "headers": [
-        { "key": "Content-Type", "value": "application/pdf" },
-        { "key": "Content-Disposition", "value": "inline; filename=\"Chetan-Bhosale-Resume.pdf\"" },
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Chetan-Bhosale-Resume.pdf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/llms(.*)\\.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
       ]
     }
   ]

@@ -1,6 +1,6 @@
 # portfolio-latest
 
-Personal portfolio of **Chetan Bhosale**, founding engineer at [Linkrunner](https://www.linkrunner.io).
+Personal portfolio of **Chetan Bhosale** ([chetanbhosale.com](https://chetanbhosale.com)), founding engineer at [Linkrunner](https://www.linkrunner.io).
 
 Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies.
 
@@ -9,8 +9,13 @@ Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies.
 - `index.html`: the page (content, SEO meta, JSON-LD, inline SVG icons)
 - `styles.css`: all styles
 - `script.js`: header ticker, Bengaluru clock, scroll reveal
-- `image/`, `resume/`, `icon.svg`, `llms.txt`, `robots.txt`, `sitemap.xml`: static assets
+- `index.md`, `llms.txt`, `llms-full.txt`: the same content for AI agents and LLMs
+- `robots.txt`, `sitemap.xml`, `site.webmanifest`, `404.html`: crawler and browser files
+- `image/`, `resume/`, `icon.svg`, `icon-*.png`, `apple-touch-icon.png`: static assets
 - `vercel.json`: static hosting on Vercel, plus `/resume` serving the PDF
+
+When you change the page content, update `index.md`, `llms-full.txt` and `llms.txt` too,
+and bump `lastmod` in `sitemap.xml` and `dateModified` in the JSON-LD.
 
 ## Run locally
 
